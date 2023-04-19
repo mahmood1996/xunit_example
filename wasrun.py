@@ -1,4 +1,7 @@
-class WasRun:
+class TestCase:
+    pass
+
+class WasRun(TestCase) :
     def __init__(self, name: str) :
         self.wasRun = None
         self.name = name
