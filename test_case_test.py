@@ -1,5 +1,5 @@
 from test_case import TestCase
-from wasrun import WasRun
+from was_run import WasRun
 
 class TestCaseTest(TestCase) :
     def testRunning(self) :
