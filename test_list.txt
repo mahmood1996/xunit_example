@@ -1,6 +1,6 @@
 XUnit's Test List
 (Done) Invoke test method.
-(->) Invoke setUp first.
+(Done) Invoke setUp first.
 - Invoke tearDown afterward.
 - Invoke tearDown even if the test method failed.
 - Report collected results.
