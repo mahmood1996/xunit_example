@@ -4,4 +4,4 @@ XUnit's Test List
 - Invoke tearDown afterward.
 - Invoke tearDown even if the test method failed.
 - Report collected results.
-(->) Log string in WasRun.
+(Done) Log string in WasRun.
