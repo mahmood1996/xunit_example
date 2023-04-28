@@ -7,7 +7,7 @@ class TestCaseTest(TestCase) :
 
     def testSetUp(self) :
         self.test.run()
-        assert(self.test.wasSetUp)
+        assert('setUp ' == self.test.log)
     
     def testRunning(self) :
         self.test.run()
