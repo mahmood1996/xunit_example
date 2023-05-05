@@ -11,8 +11,10 @@ class TestCase:
         pass
 
     def run(self) :
+        result = TestResult()
+        result.testStarted()
         self.setUp()
         method = getattr(self, self.name)
         method()
         self.tearDown()
-        return TestResult()
+        return result
