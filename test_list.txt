@@ -6,4 +6,4 @@ XUnit's Test List
 (Done) Report collected results.
 - run multiple tests.
 (Done) Log string in WasRun.
-- Report failed tests.
+(Done) Report failed tests.
