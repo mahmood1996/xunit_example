@@ -1,5 +1,6 @@
 from test_case import TestCase
 from was_run import WasRun
+from broken_setup_test import BrokenSetupTest
 from test_result import TestResult
 
 class TestCaseTest(TestCase) :
@@ -23,7 +24,8 @@ class TestCaseTest(TestCase) :
         result.testStarted()
         result.testFailed()
         assert('1 run, 1 failed' == result.summary())
-    
+
 TestCaseTest('testTemplateMethod').run()
+TestCaseTest('testResult').run()
 TestCaseTest('testFailedResultFormatting').run()
 TestCaseTest('testFailedResult').run()
