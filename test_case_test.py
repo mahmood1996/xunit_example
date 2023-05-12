@@ -1,6 +1,5 @@
 from test_case import TestCase
 from was_run import WasRun
-from broken_setup_test import BrokenSetupTest
 from test_result import TestResult
 
 class TestCaseTest(TestCase) :
