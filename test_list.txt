@@ -7,4 +7,4 @@ XUnit's Test List
 - run multiple tests.
 (Done) Log string in WasRun.
 (Done) Report failed tests.
-- Catch and report setUp errors.
+(Done) Catch and report setUp errors.

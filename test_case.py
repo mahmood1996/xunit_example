@@ -13,8 +13,8 @@ class TestCase:
     def run(self) :
         result = TestResult()
         result.testStarted()
-        self.setUp()
         try:
+            self.setUp()
             method = getattr(self, self.name)
             method()
         except :
