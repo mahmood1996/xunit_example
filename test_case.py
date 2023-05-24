@@ -10,8 +10,7 @@ class TestCase:
     def tearDown(self) :
         pass
 
-    def run(self) :
-        result = TestResult()
+    def run(self, result: TestResult) :
         result.testStarted()
         try:
             self.setUp()
@@ -20,4 +19,3 @@ class TestCase:
         except :
             result.testFailed()
         self.tearDown()
-        return result

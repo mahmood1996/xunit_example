@@ -4,7 +4,8 @@ XUnit's Test List
 (Done) Invoke tearDown afterward.
 - Invoke tearDown even if the test method failed.
 (Done) Report collected results.
-- run multiple tests.
+(Done) run multiple tests.
 (Done) Log string in WasRun.
 (Done) Report failed tests.
 (Done) Catch and report setUp errors.
+- Create a TestSuite from a TestCase class.
