@@ -6,6 +6,7 @@ class WasRun(TestCase) :
     
     def setUp(self) :
         self.log = 'setUp '
+        self.wasTearDownCalled = False
 
     def testMethod(self) :
         self.log = self.log + 'testMethod '
@@ -15,3 +16,4 @@ class WasRun(TestCase) :
 
     def tearDown(self) :
         self.log = self.log + 'tearDown '
+        self.wasTearDownCalled = True

@@ -35,6 +35,12 @@ class TestCaseTest(TestCase) :
         suite.run(self.result)
         assert('2 run, 1 failed' == self.result.summary())
 
+    def testTearDownCalledEventIfTestFailed(self) :
+        test = WasRun('testBrokenMethod')
+        test.run(self.result)
+        assert(test.wasTearDownCalled)
+        assert('1 run, 1 failed' == self.result.summary())
+
 
 suite = TestSuite()
 
@@ -43,6 +49,8 @@ suite.add(TestCaseTest('testResult'))
 suite.add(TestCaseTest('testFailedResultFormatting'))
 suite.add(TestCaseTest('testFailedResult'))
 suite.add(TestCaseTest('testSuite'))
+suite.add(TestCaseTest('testTearDownCalledEventIfTestFailed'))
+
 
 result = TestResult()
 

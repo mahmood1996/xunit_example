@@ -2,7 +2,7 @@ XUnit's Test List
 (Done) Invoke test method.
 (Done) Invoke setUp first.
 (Done) Invoke tearDown afterward.
-- Invoke tearDown even if the test method failed.
+(Done) Invoke tearDown even if the test method failed.
 (Done) Report collected results.
 (Done) run multiple tests.
 (Done) Log string in WasRun.
