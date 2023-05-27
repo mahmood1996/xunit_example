@@ -6,9 +6,14 @@ class WasRun(TestCase) :
     
     def setUp(self) :
         self.log = 'setUp '
+        self.wasTearDownCalled = False
 
     def testMethod(self) :
         self.log = self.log + 'testMethod '
 
+    def testBrokenMethod(self) :
+        raise Exception()
+
     def tearDown(self) :
         self.log = self.log + 'tearDown '
+        self.wasTearDownCalled = True

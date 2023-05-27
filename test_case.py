@@ -10,9 +10,12 @@ class TestCase:
     def tearDown(self) :
         pass
 
-    def run(self) :
-        self.setUp()
-        method = getattr(self, self.name)
-        method()
+    def run(self, result: TestResult) :
+        result.testStarted()
+        try:
+            self.setUp()
+            method = getattr(self, self.name)
+            method()
+        except :
+            result.testFailed()
         self.tearDown()
-        return TestResult()
