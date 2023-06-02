@@ -9,4 +9,4 @@ XUnit's Test List
 (Done) Report failed tests.
 (Done) Catch and report setUp errors.
 (Done) Create a TestSuite from a TestCase Class.
-(Done) get names of test methods start with prefix 'test'.
+(Done) get test methods in TestCase class.

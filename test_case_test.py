@@ -43,32 +43,16 @@ class TestCaseTest(TestCase) :
         assert('1 run, 1 failed' == self.result.summary())
     
     def testCreateTestSuiteFromTestCaseClass(self) :
-        suite = createTestSuiteFrom(WasRun)
+        suite = TestSuite.createFrom(WasRun)
         suite.run(self.result)
         assert('2 run, 1 failed' == self.result.summary())
 
-    def testGetNamesOfTestMethods(self) :
-        actual = getNamesOfTestMethodsIn(WasRun)
+    def testGetTestMethods(self) :
+        actual = TestSuite.getTestMethodsIn(WasRun)
         expected = ['testMethod', 'testBrokenMethod']
         assert(set(actual) == set(expected))
 
-def createTestSuiteFrom(testCaseClass: type[TestCase]) -> TestSuite : 
-    suite = TestSuite()
-
-    tests_names = getNamesOfTestMethodsIn(testCaseClass)
-
-    for test_method_name in tests_names:
-        test = testCaseClass(test_method_name)
-        suite.add(test)
-    
-    return suite
-
-def getNamesOfTestMethodsIn(testCaseClass: type[TestCase]) -> list[str]:
-    attributes = dir(testCaseClass)
-    test_methods_names = filter(lambda e: str(e).startswith('test'), attributes)
-    return list(test_methods_names)
-
-suite = createTestSuiteFrom(TestCaseTest)
+suite = TestSuite.createFrom(TestCaseTest)
 
 result = TestResult()
 
