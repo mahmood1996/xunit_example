@@ -10,3 +10,10 @@ XUnit's Test List
 (Done) Catch and report setUp errors.
 (Done) Create a TestSuite from a TestCase Class.
 (Done) get test methods in TestCase class.
+(Done) Report failed test with testcase name and type of exception on result.
+- Report broken setUp method, not to note testMethod with exception.
+- assertEquals(..., ...)
+- assertTrue(...)
+- assertFalse(...)
+- assertEquals with 2 collections (unordered).
+- assertEquals with 2 collections (ordered).

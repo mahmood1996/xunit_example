@@ -22,30 +22,32 @@ class TestCaseTest(TestCase) :
     def testFailedResult(self) :
         test = WasRun('testBrokenMethod')
         test.run(self.result)
-        assert('1 run, 1 failed' == self.result.summary())
+        assert('1 run, 1 failed\n(X) WasRun.testBrokenMethod Exception' == self.result.summary())
 
     def testFailedResultFormatting(self) :
         self.result.testStarted()
-        self.result.testFailed()
-        assert('1 run, 1 failed' == self.result.summary())
+        self.result.testFailed(TestCaseTest('testBrokenMethod'), AssertionError())
+        self.result.testStarted()
+        self.result.testFailed(TestCaseTest('testFooBar'), ZeroDivisionError())
+        assert('2 run, 2 failed\n(X) TestCaseTest.testBrokenMethod AssertionError\n(X) TestCaseTest.testFooBar ZeroDivisionError' == self.result.summary())
 
     def testSuite(self) :
         suite = TestSuite()
         suite.add(WasRun('testMethod'))
         suite.add(WasRun('testBrokenMethod'))
         suite.run(self.result)
-        assert('2 run, 1 failed' == self.result.summary())
+        assert('2 run, 1 failed\n(X) WasRun.testBrokenMethod Exception' == self.result.summary())
 
     def testTearDownCalledEventIfTestFailed(self) :
         test = WasRun('testBrokenMethod')
         test.run(self.result)
         assert(test.wasTearDownCalled)
-        assert('1 run, 1 failed' == self.result.summary())
+        assert('1 run, 1 failed\n(X) WasRun.testBrokenMethod Exception' == self.result.summary())
     
     def testCreateTestSuiteFromTestCaseClass(self) :
         suite = TestSuite.createFrom(WasRun)
         suite.run(self.result)
-        assert('2 run, 1 failed' == self.result.summary())
+        assert('2 run, 1 failed\n(X) WasRun.testBrokenMethod Exception' == self.result.summary())
 
     def testGetTestMethods(self) :
         actual = TestSuite.getTestMethodsIn(WasRun)

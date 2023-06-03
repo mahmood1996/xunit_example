@@ -16,6 +16,6 @@ class TestCase:
             self.setUp()
             method = getattr(self, self.name)
             method()
-        except :
-            result.testFailed()
+        except Exception as exception:
+            result.testFailed(self, exception)
         self.tearDown()
