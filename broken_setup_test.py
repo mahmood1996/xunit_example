@@ -1,4 +1,5 @@
 from test_case import TestCase
+from test_result import TestResult
 
 class BrokenSetupTest(TestCase) :
     def setUp(self) :
@@ -7,4 +8,8 @@ class BrokenSetupTest(TestCase) :
     def testMethod(self) :
         pass
 
-print(BrokenSetupTest('testMethod').run().summary())
+result = TestResult()
+
+BrokenSetupTest('testMethod').run(result)
+
+print(result.summary())

@@ -12,8 +12,12 @@ XUnit's Test List
 (Done) get test methods in TestCase class.
 (Done) Report failed test with testcase name and type of exception on result.
 - Report broken setUp method, not to note testMethod with exception.
-- assertEquals(..., ...)
-- assertTrue(...)
-- assertFalse(...)
+(Done) Report details of exception caught in the results.
+(Done) assertEquals(..., ...)
+(Done) assertTrue(...)
+- assertRaises(expectedException, broken_function, args)
+-- broken_function(args) raises the expected exception -> return None.
+-- broken_function(args) raises another exception -> raise AssertionError('expected: raises expectedException('msg of expectedException') but actual: raises another exception')..
+-- the passed function is not broken -> raise AssertionError('expected: raises expectedException('msg of expectedException') but actual: returns (Value of function invocation)').
 - assertEquals with 2 collections (unordered).
 - assertEquals with 2 collections (ordered).
