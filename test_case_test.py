@@ -54,10 +54,10 @@ class TestCaseTest(TestCase) :
         expected = ['testMethod', 'testBrokenMethod']
         self.assertEquals(expected= set(expected), actual= set(actual))
     
-    def testAssertTrueWhenPassTrueValue(self) :
+    def testAssertTrue_WhenPassTrueValue(self) :
         assert(self.assertTrue(True) == None)
     
-    def testAssertTrueWhenPassFalseValue(self) :
+    def testAssertTrue_WhenPassFalseValue(self) :
         error_msg = ''
         try:
             self.assertTrue(False)
@@ -65,12 +65,12 @@ class TestCaseTest(TestCase) :
             error_msg = str(exception)
         assert('expected: True, but actual: False' == error_msg)
     
-    def testAssertEqualsWhenActualEqualsExpected(self) :
+    def testAssertEquals_WhenActualEqualsExpected(self) :
         expected = 'test'
         actual = 'test'
         assert(self.assertEquals(expected, actual) == None)
     
-    def testAssertEqualsWhenActualNotEqualsExpected(self) :
+    def testAssertEquals_WhenActualNotEqualsExpected(self) :
         error_msg = ''
         try:
             self.assertEquals(expected='test', actual='test_')
