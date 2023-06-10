@@ -73,12 +73,10 @@ class TestCaseTest(TestCase) :
     def testAssertEqualsWhenActualNotEqualsExpected(self) :
         error_msg = ''
         try:
-            expected = 'test'
-            actual = 'test_'
-            self.assertEquals(expected=expected, actual=actual)
+            self.assertEquals(expected='test', actual='test_')
         except Exception as exception:
             error_msg = str(exception)
-        assert(f"expected: '{expected}', but actual: '{actual}'" == error_msg)
+        assert("expected: 'test', but actual: 'test_'" == error_msg)
 
 suite = TestSuite.createFrom(TestCaseTest)
 
