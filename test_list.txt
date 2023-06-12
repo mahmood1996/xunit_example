@@ -15,9 +15,12 @@ XUnit's Test List
 (Done) Report details of exception caught in the results.
 (Done) assertEquals(..., ...)
 (Done) assertTrue(...)
-- assertRaises(expectedException, broken_function, args)
--- broken_function(args) raises the expected exception -> return None.
--- broken_function(args) raises another exception -> raise AssertionError('expected: raises expectedException('msg of expectedException') but actual: raises another exception')..
--- the passed function is not broken -> raise AssertionError('expected: raises expectedException('msg of expectedException') but actual: returns (Value of function invocation)').
+(Done) assertRaises(expectedException, broken_function, args)
+(Done) - broken_function(args) raises the expected exception -> return None.
+(Done) - broken_function(args) raises another exception -> raise AssertionError('expected: raises expectedException('msg of expectedException') but actual: raises another exception').
+(Done) - the passed function is not broken -> raise AssertionError('expected: raises expectedException('msg of expectedException') but actual: returns (Value of function invocation)').
+(Done) - broken_function(args) raises the expectedException but with different error msg.
+- Refactor function of formatting exceptions in assertRaises.
+- Refactor function of comparing exceptions in assertRaises.
 - assertEquals with 2 collections (unordered).
 - assertEquals with 2 collections (ordered).

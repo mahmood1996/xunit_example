@@ -58,12 +58,10 @@ class TestCaseTest(TestCase) :
         assert(self.assertTrue(True) == None)
     
     def testAssertTrue_WhenPassFalseValue(self) :
-        error_msg = ''
-        try:
+        def __callAssertTrue(*args) :
             self.assertTrue(False)
-        except Exception as exception:
-            error_msg = str(exception)
-        assert('expected: True, but actual: False' == error_msg)
+
+        self.assertRaises(AssertionError('expected: True, but actual: False'), __callAssertTrue)
     
     def testAssertEquals_WhenActualEqualsExpected(self) :
         expected = 'test'
@@ -71,12 +69,63 @@ class TestCaseTest(TestCase) :
         assert(self.assertEquals(expected, actual) == None)
     
     def testAssertEquals_WhenActualNotEqualsExpected(self) :
-        error_msg = ''
-        try:
+        def __callAssertEquals(*args) :
             self.assertEquals(expected='test', actual='test_')
-        except Exception as exception:
-            error_msg = str(exception)
-        assert("expected: 'test', but actual: 'test_'" == error_msg)
+
+        self.assertRaises(AssertionError("expected: 'test', but actual: 'test_'"), __callAssertEquals)
+    
+    def testAssertRaises_WhenBrokenFuncRaisesExpectedException(self) :
+        expected_exception = Exception('')
+        
+        def broken_func(*args) :
+            raise Exception('')
+        
+        args = 0
+
+        assert(self.assertRaises(expected_exception, broken_func, args) == None)
+    
+    def testAssertRaises_WhenFunctionRaisesExceptionDifferentThanExpected(self) :
+        def broken_func(*args) :
+            raise AssertionError()
+        
+        expected_exception = Exception('error')
+        args = 0
+        error_msg = ''
+        try :
+            self.assertRaises(expected_exception, broken_func, args)
+        except Exception as e :
+            error_msg = str(e)
+        
+        self.assertEquals("expected: raises Exception('error'), but actual: raises AssertionError('')", error_msg)
+
+    def testAssertRaises_WhenFunctionNotRaiseAnyException(self) :
+        def func(*args) :
+            pass
+        
+        expected_exception = Exception('error')
+        args = 0
+        error_msg = ''
+        try :
+            self.assertRaises(expected_exception, func, args)
+        except Exception as e :
+            error_msg = str(e)
+        
+        self.assertEquals("expected: raises Exception('error'), but actual: returns None", error_msg)
+    
+    def testAssertRaises_WhenBrokenFunctionRaisesExpectedExceptionButWithDifferentErrorMessage(self) :
+        
+        def broken_func(*args) :
+            raise Exception('another error msg')
+        
+        expected_exception = Exception('error msg')
+        args = 0
+        error_msg = ''
+        try :
+            self.assertRaises(expected_exception, broken_func, args)
+        except Exception as e :
+            error_msg = str(e)
+        
+        self.assertEquals("expected: raises Exception('error msg'), but actual: raises Exception('another error msg')", error_msg)
 
 suite = TestSuite.createFrom(TestCaseTest)
 
